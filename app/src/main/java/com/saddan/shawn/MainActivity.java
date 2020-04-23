@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements FragmentChangeLis
         ft.add(R.id.container,new HomeFragment(),null);
         ft.commit();
 
-        Calendar cal = Calendar.getInstance();
+        /*Calendar cal = Calendar.getInstance();
         int current = cal.get(Calendar.YEAR);
         ArrayList<String> current_year = getDatesOfYear(current);
         Log.d(TAG, "onCreate: "+current_year.size());
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements FragmentChangeLis
         for (String d:current_year)
         {
             Log.d(TAG, "onCreate: "+d);
-        }
+        }*/
 
     }
 
@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements FragmentChangeLis
     public void FragmentChange(Fragment fragment)
     {
         FragmentTransaction ft=fragmentManager.beginTransaction();
-        ft.replace(R.id.container,fragment,null);
+        ft.replace(R.id.container,fragment);
+        ft.addToBackStack(null);
         ft.commit();
     }
 }
