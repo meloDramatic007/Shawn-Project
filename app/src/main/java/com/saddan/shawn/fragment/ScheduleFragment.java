@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker;
 import com.saddan.shawn.R;
@@ -28,6 +29,7 @@ public class ScheduleFragment extends Fragment
     private Date arrivedDate,departerDate;
     private LinearLayout arriveDisableLayout,departureDisableLayout;
     private boolean setArrivedDate=false;
+    private boolean more=false;
     private FragmentChangeListener listener;
     public ScheduleFragment()
     {
@@ -61,13 +63,41 @@ public class ScheduleFragment extends Fragment
         super.onViewCreated(view, savedInstanceState);
 
         Log.d(TAG, "onViewCreated: ");
-        departurePicker.setEnabled(false);
-        departureDisableLayout.setBackgroundColor(getResources().getColor(R.color.disableColor));
 
-        arrivedDate=arrivedPicker.getDate();
-        Log.d(TAG, "arrived date before scrolling "+arrivedDate);
-        departerDate=departurePicker.getDate();
-        Log.d(TAG, "departure date before scrolling "+departerDate);
+
+        //assert getArguments() != null;
+        /*if(getArguments()!=null)
+        {*/
+         more=getArguments().getBoolean("m");
+        //}
+
+        if(more)
+        {
+               setArrivedDate=true;
+               arrivedPicker.setEnabled(false);
+               arriveDisableLayout.setBackgroundColor(getResources().getColor(R.color.disableColor));
+               Date arrived=new Date(getArguments().getLong("a"));
+               Date departure=new Date(getArguments().getLong("d"));
+
+               arrivedDate=arrived;
+               departerDate=departure;
+
+               arrivedPicker.setDefaultDate(arrived);
+               departurePicker.setDefaultDate(departure);
+
+        }else {
+            departurePicker.setEnabled(false);
+            departureDisableLayout.setBackgroundColor(getResources().getColor(R.color.disableColor));
+
+            arrivedDate=arrivedPicker.getDate();
+            Log.d(TAG, "arrived date before scrolling "+arrivedDate);
+            departerDate=departurePicker.getDate();
+            Log.d(TAG, "departure date before scrolling "+departerDate);
+
+        }
+
+
+
 
         arrivedPicker.addOnDateChangedListener(new SingleDateAndTimePicker.OnDateChangedListener() {
             @Override
@@ -94,8 +124,10 @@ public class ScheduleFragment extends Fragment
             @Override
             public void onClick(View v)
             {
+                Log.d(TAG, "onClick: didnot entered to condition");
                 if(!setArrivedDate)
                 {
+                    Log.d(TAG, "onClick:  entered to if");
                     arrivedPicker.setEnabled(false);
                     arriveDisableLayout.setBackgroundColor(getResources().getColor(R.color.disableColor));
 
@@ -104,15 +136,23 @@ public class ScheduleFragment extends Fragment
 
                     setArrivedDate=true;
                 }else {
-
-                      Bundle bundle=new Bundle();
-                      Log.d(TAG, "onClick: "+arrivedDate.getTime());
-                      Log.d(TAG, "onClick: "+departerDate.getTime());
-                      bundle.putLong("arrived",arrivedDate.getTime());
-                      bundle.putLong("departure",departerDate.getTime());
-                      BookedFragment bookedFragment=new BookedFragment();
-                      bookedFragment.setArguments(bundle);
-                      listener.FragmentChange(bookedFragment);
+                      Log.d(TAG, "onClick: didnot entered to else");
+                      if(departerDate.getTime()-arrivedDate.getTime()<0)
+                      {
+                          Toast.makeText(requireActivity(), "Departure time can't less than arrived time", Toast.LENGTH_SHORT).show();
+                      }else {
+                        Bundle bundle=new Bundle();
+                        Log.d(TAG, "onClick: "+arrivedDate.getTime());
+                        Log.d(TAG, "onClick: "+departerDate.getTime());
+                        bundle.putBoolean("s",true);
+                        bundle.putLong("arrived",arrivedDate.getTime());
+                        bundle.putLong("departure",departerDate.getTime());
+                        //BookedFragment bookedFragment=new BookedFragment();
+                        //bookedFragment.setArguments(bundle);
+                        HomeFragment homeFragment=new HomeFragment();
+                        homeFragment.setArguments(bundle);
+                        listener.FragmentChange(homeFragment);
+                    }
 
                 }
 
@@ -140,7 +180,16 @@ public class ScheduleFragment extends Fragment
     @Override
     public void onStart() 
     {
-        setArrivedDate=false;
+        more=getArguments().getBoolean("m");
+
+        if(more)
+        {
+            setArrivedDate=true;
+        }
+        else {
+            setArrivedDate=false;
+        }
+
 
         super.onStart();
         Log.d(TAG, "onStart: ");

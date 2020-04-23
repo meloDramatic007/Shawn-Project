@@ -28,7 +28,11 @@ public class MainActivity extends AppCompatActivity implements FragmentChangeLis
 
         fragmentManager=getSupportFragmentManager();
         FragmentTransaction ft=fragmentManager.beginTransaction();
-        ft.add(R.id.container,new HomeFragment(),null);
+        Bundle bundle =new Bundle();
+        bundle.putBoolean("s",false);
+        HomeFragment homeFragment=new HomeFragment();
+        homeFragment.setArguments(bundle);
+        ft.add(R.id.container,homeFragment,null);
         ft.commit();
 
         /*Calendar cal = Calendar.getInstance();

@@ -86,7 +86,7 @@
             <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
                 android:id="@+id/departurePicker"
                 app:picker_textSize="18dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="190dp"
                 app:picker_selectorColor="@android:color/transparent"
                 app:picker_curved="true"
