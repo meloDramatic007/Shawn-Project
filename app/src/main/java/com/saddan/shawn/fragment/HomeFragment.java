@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +36,7 @@ public class HomeFragment extends Fragment
 
     private  final String TAG =getClass().getSimpleName() ;
     private long arrived,departure;
-    private TextView arrivedtimeTV,departuretimeTV,timeDifferenceTV;
+    private TextView arrivedtimeTV,departuretimeTV,timeDifferenceTV,countDownTV;
     private long difference;
     private Button moreBtn;
     private LinearLayout bookedLayout;
@@ -59,6 +60,7 @@ public class HomeFragment extends Fragment
         arrivedtimeTV=view.findViewById(R.id.arrivedtimeTV);
         departuretimeTV=view.findViewById(R.id.departureTimeTV);
         timeDifferenceTV=view.findViewById(R.id.timeDifferenceTV);
+        countDownTV=view.findViewById(R.id.countDownTV);
         moreBtn=view.findViewById(R.id.moreBtn);
         bookedLayout=view.findViewById(R.id.bookedLayout);
         departureBtn=view.findViewById(R.id.departureBtn);
@@ -70,6 +72,8 @@ public class HomeFragment extends Fragment
             arrived=getArguments().getLong("arrived",0);
             departure=getArguments().getLong("departure",0);
             difference=departure-arrived;
+
+            setTimer(difference);
 
             Log.d(TAG, "onCreateView: "+arrived+"    "+departure);
             Log.d(TAG, "onCreateView: difference:"+difference);
@@ -83,6 +87,20 @@ public class HomeFragment extends Fragment
 
 
          return view;
+    }
+
+    private void setTimer(long difference)
+    {
+        new CountDownTimer(difference, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                countDownTV.setText(getTimeDiffrence(millisUntilFinished));
+            }
+
+            public void onFinish() {
+                countDownTV.setText("done!");
+            }
+        }.start();
     }
 
     @SuppressLint("SetTextI18n")

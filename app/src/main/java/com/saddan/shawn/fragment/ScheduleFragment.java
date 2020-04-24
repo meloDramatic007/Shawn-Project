@@ -70,6 +70,8 @@ public class ScheduleFragment extends Fragment
         {*/
          more=getArguments().getBoolean("m");
         //}
+        arrivedPicker.setIsAmPm(true);
+        departurePicker.setIsAmPm(true);
 
         if(more)
         {
