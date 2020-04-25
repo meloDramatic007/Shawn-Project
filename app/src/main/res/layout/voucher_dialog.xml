@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:minWidth="1000dp"
+    android:minHeight="450dp">
 
     <ImageButton
         android:id="@+id/clsDialogImageBtn"
@@ -12,8 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_close"
-        android:background="#07000000"
-        />
+        android:background="#07000000" />
+
     <TextView
         android:id="@+id/topText"
         android:layout_margin="3dp"
@@ -23,8 +23,7 @@
         android:text="Your Book"
         android:textSize="16sp"
         android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        />
+        android:layout_centerInParent="true" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -33,8 +32,8 @@
         android:layout_marginRight="10dp"
         android:padding="3dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        >
+        android:layout_alignParentRight="true">
+
         <TextView
             android:id="@+id/editSlotText"
             android:textSize="14sp"
@@ -42,8 +41,7 @@
             android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Edit slot"
-            android:background="@drawable/border_style"
-            />
+            android:background="@drawable/border_style" />
     </LinearLayout>
 
     <TextView
@@ -59,7 +57,8 @@
         android:text="Parking slot 17"
         android:layout_centerInParent="true"
 
-         />
+        />
+
     <TextView
         android:layout_margin="1dp"
         android:padding="2dp"
@@ -73,20 +72,22 @@
         android:layout_centerInParent="true"
 
         />
+
     <View
         android:id="@+id/border1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/addresstext"
         android:background="#978080"
-        android:layout_marginTop="2dp"
-        />
+        android:layout_marginTop="2dp" />
+
     <RelativeLayout
         android:id="@+id/second_layer"
 
         android:layout_below="@+id/border1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
 
             android:id="@+id/arrivedtimeTV"
@@ -96,14 +97,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Arriving 12:30pm"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
+
         <TextView
             android:id="@+id/departureTimeTV"
             android:padding="2dp"
             android:layout_below="@+id/arrivedtimeTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Departure-04:30pm"/>
+            android:text="Departure-04:30pm" />
+
         <TextView
             android:layout_centerInParent="true"
             android:id="@+id/timeDifferenceTV"
@@ -113,9 +116,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2:30h"
-            android:textSize="15sp"
-            />
+            android:textSize="15sp" />
     </RelativeLayout>
+
     <TextView
         android:layout_marginLeft="2dp"
         android:id="@+id/eachHourText"
@@ -126,7 +129,8 @@
         android:text="Each hour"
         android:textStyle="bold"
         android:textSize="16sp"
-        android:layout_below="@id/second_layer"/>
+        android:layout_below="@id/second_layer" />
+
     <TextView
         android:padding="5dp"
         android:layout_alignParentRight="true"
@@ -135,16 +139,15 @@
         android:layout_height="wrap_content"
         android:text="BDT100/h"
         android:textStyle="bold"
-        android:textSize="16sp"
-        />
+        android:textSize="16sp" />
+
     <View
         android:id="@+id/border2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/eachHourText"
         android:background="#978080"
-        android:layout_marginTop="2dp"
-        />
+        android:layout_marginTop="2dp" />
 
     <TextView
         android:id="@+id/promoText"
@@ -159,8 +162,8 @@
         android:text="Use promo"
         android:textStyle="bold"
         android:textSize="15sp"
-        android:gravity="center"
-        />
+        android:gravity="center" />
+
     <TextView
         android:id="@+id/subTtlText"
         android:textColor="@android:color/black"
@@ -171,7 +174,8 @@
         android:text="Subtotal Parking:"
         android:layout_below="@+id/promoText"
         android:textStyle="bold"
-        android:textSize="15sp"/>
+        android:textSize="15sp" />
+
     <TextView
         android:id="@+id/subTtlCountText"
         android:layout_alignParentRight="true"
@@ -193,8 +197,8 @@
         android:layout_height="wrap_content"
         android:text="Discount"
         android:textSize="14sp"
-        android:layout_below="@+id/subTtlText"
-        />
+        android:layout_below="@+id/subTtlText" />
+
     <TextView
         android:layout_margin="5dp"
         android:padding="2dp"
@@ -203,8 +207,8 @@
         android:text="(BDT300.00)"
         android:layout_alignParentRight="true"
         android:textSize="14sp"
-        android:layout_alignBaseline="@+id/discountTxt"
-        />
+        android:layout_alignBaseline="@+id/discountTxt" />
+
     <TextView
         android:id="@+id/totalText"
         android:layout_marginLeft="12dp"
@@ -215,7 +219,8 @@
         android:text="Total"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black" />
+
     <TextView
         android:id="@+id/ttlCount"
         android:layout_width="wrap_content"
@@ -229,14 +234,15 @@
         android:layout_alignBaseline="@+id/totalText"
 
         />
+
     <View
         android:id="@+id/border3"
         android:layout_marginTop="2dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#9C9696"
-        android:layout_below="@id/totalText"
-        />
+        android:layout_below="@id/totalText" />
+
     <TextView
         android:textSize="14sp"
         android:id="@+id/disclaimerTxt"
@@ -245,8 +251,8 @@
         android:layout_below="@id/border3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/loream_ipsum"
-        />
+        android:text="@string/loream_ipsum" />
+
     <LinearLayout
         android:id="@+id/termConWrapLayout"
         android:layout_width="wrap_content"
@@ -254,8 +260,8 @@
         android:layout_margin="5dp"
         android:padding="5dp"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/disclaimerTxt"
-        >
+        android:layout_below="@+id/disclaimerTxt">
+
         <TextView
             android:id="@+id/termsConText"
             android:background="@drawable/border_style"
@@ -264,8 +270,7 @@
             android:text="T&amp;C"
             android:textStyle="bold"
             android:textSize="14sp"
-            android:gravity="center"
-            />
+            android:gravity="center" />
     </LinearLayout>
 
     <Button
@@ -277,5 +282,5 @@
         android:textColor="@android:color/white"
         android:layout_below="@id/termConWrapLayout"
         android:layout_margin="10dp"
-        android:padding="10dp"/>
+        android:padding="10dp" />
 </RelativeLayout>

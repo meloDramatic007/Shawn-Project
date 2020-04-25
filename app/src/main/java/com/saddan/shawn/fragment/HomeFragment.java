@@ -2,6 +2,7 @@ package com.saddan.shawn.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.saddan.shawn.R;
 import com.saddan.shawn.helper.DialogHelper;
@@ -30,14 +32,15 @@ import java.util.concurrent.TimeUnit;
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
+    private Context context;
     private Button setbtn;
     private FragmentChangeListener listener;
 
     private final String TAG = getClass().getSimpleName();
     private long arrived, departure;
-    private TextView arrivedtimeTV, departuretimeTV, timeDifferenceTV, countDownTV;
+    private TextView arrivedtimeTV, departuretimeTV, timeDifferenceTV, countDownTV, textViewTermsCondition;
     private long difference;
-    private Button moreBtn;
+    private Button moreBtn, btnLiveParking;
     private LinearLayout bookedLayout;
     //private boolean fromScheduleFragment=false;
     private Button departureBtn;
@@ -52,6 +55,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        context = getActivity();
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
 
@@ -60,6 +64,8 @@ public class HomeFragment extends Fragment {
         timeDifferenceTV = view.findViewById(R.id.timeDifferenceTV);
         countDownTV = view.findViewById(R.id.countDownTV);
         moreBtn = view.findViewById(R.id.moreBtn);
+        btnLiveParking = view.findViewById(R.id.btnLiveParking);
+        textViewTermsCondition = view.findViewById(R.id.textViewTermsCondition);
         bookedLayout = view.findViewById(R.id.bookedLayout);
         departureBtn = view.findViewById(R.id.departureBtn);
 
@@ -126,6 +132,20 @@ public class HomeFragment extends Fragment {
                 bundle.putLong("d", departure);
                 scheduleFragment.setArguments(bundle);
                 listener.FragmentChange(scheduleFragment);
+            }
+        });
+
+        btnLiveParking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Coming Soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        textViewTermsCondition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Coming Soon...", Toast.LENGTH_SHORT).show();
             }
         });
 
