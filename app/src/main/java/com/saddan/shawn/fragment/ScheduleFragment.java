@@ -31,6 +31,7 @@ public class ScheduleFragment extends Fragment
     private boolean setArrivedDate=false;
     private boolean more=false;
     private FragmentChangeListener listener;
+
     public ScheduleFragment()
     {
         // Required empty public constructor
@@ -73,6 +74,8 @@ public class ScheduleFragment extends Fragment
         arrivedPicker.setIsAmPm(true);
         departurePicker.setIsAmPm(true);
 
+        //arrivedPicker.
+
         if(more)
         {
                setArrivedDate=true;
@@ -97,9 +100,6 @@ public class ScheduleFragment extends Fragment
             Log.d(TAG, "departure date before scrolling "+departerDate);
 
         }
-
-
-
 
         arrivedPicker.addOnDateChangedListener(new SingleDateAndTimePicker.OnDateChangedListener() {
             @Override
@@ -149,8 +149,8 @@ public class ScheduleFragment extends Fragment
                         bundle.putBoolean("s",true);
                         bundle.putLong("arrived",arrivedDate.getTime());
                         bundle.putLong("departure",departerDate.getTime());
-                        //BookedFragment bookedFragment=new BookedFragment();
-                        //bookedFragment.setArguments(bundle);
+                        /*BookedFragment bookedFragment=new BookedFragment();
+                        bookedFragment.setArguments(bundle);*/
                         HomeFragment homeFragment=new HomeFragment();
                         homeFragment.setArguments(bundle);
                         listener.FragmentChange(homeFragment);

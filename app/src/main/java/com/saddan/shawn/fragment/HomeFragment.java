@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment
     private long difference;
     private Button moreBtn;
     private LinearLayout bookedLayout;
-    //private boolean fromScheduleFragment=false;
+//    private boolean fromScheduleFragment=false;
     private Button departureBtn;
 
 

@@ -32,6 +32,7 @@ public class BookedFragment extends Fragment
     private TextView arrivedtimeTV,departuretimeTV,timeDifferenceTV;
     private long difference;
     private Button moreBtn;
+    private Button departureBtn;
     private FragmentChangeListener listener;
 
     public BookedFragment()
@@ -52,6 +53,7 @@ public class BookedFragment extends Fragment
          departuretimeTV=view.findViewById(R.id.departureTimeTV);
          timeDifferenceTV=view.findViewById(R.id.timeDifferenceTV);
          moreBtn=view.findViewById(R.id.moreBtn);
+        departureBtn=view.findViewById(R.id.departureBtn);
 
         assert getArguments() != null;
         arrived=getArguments().getLong("arrived",0);
@@ -91,6 +93,9 @@ public class BookedFragment extends Fragment
                  listener.FragmentChange(scheduleFragment);
             }
         });
+
+
+
     }
 
     @SuppressLint("DefaultLocale")
@@ -111,6 +116,7 @@ public class BookedFragment extends Fragment
         // Create a calendar object that will convert the date and time value in milliseconds to date.
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(milliSeconds);
+
         return formatter.format(calendar.getTime());
     }
 }
