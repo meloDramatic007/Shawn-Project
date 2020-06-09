@@ -59,7 +59,7 @@ public class ScheduleFragment extends Fragment implements DialogHelper.PayBtnCli
         departureDisableLayout = view.findViewById(R.id.departureDisable);
 
         listener = (FragmentChangeListener) getActivity();
-        payBtnClickListener=this;
+        payBtnClickListener = this;
 
         return view;
     }
@@ -83,7 +83,6 @@ public class ScheduleFragment extends Fragment implements DialogHelper.PayBtnCli
         departurePicker.setIsAmPm(true);
         arrivedPicker.setDefaultDate(currentTime);
         departurePicker.setDefaultDate(currentTime);
-
 
 
         if (more) {
@@ -161,8 +160,8 @@ public class ScheduleFragment extends Fragment implements DialogHelper.PayBtnCli
                         Dialog dialog = new Dialog(requireActivity());
                         dialog.setContentView(R.layout.voucher_dialog);
                         DialogHelper dialogHelper = new DialogHelper(dialog, requireActivity(), getDate(arrivedDate.getTime()), getDate(departerDate.getTime()),
-                                getTimeDiffrence(departerDate.getTime()-arrivedDate.getTime())
-                                ,departerDate.getTime()-arrivedDate.getTime(),payBtnClickListener);
+                                getTimeDiffrence(departerDate.getTime() - arrivedDate.getTime())
+                                , departerDate.getTime() - arrivedDate.getTime(), payBtnClickListener);
                         dialogHelper.initDialog();
                         dialog.show();
                     }
@@ -218,17 +217,16 @@ public class ScheduleFragment extends Fragment implements DialogHelper.PayBtnCli
     }
 
     @Override
-    public void payBtnClick()
-    {
-                        Bundle bundle = new Bundle();
-                        Log.d(TAG, "onClick: " + arrivedDate.getTime());
-                        Log.d(TAG, "onClick: " + departerDate.getTime());
-                       // bundle.putBoolean("s", true);
-                        bundle.putLong("arrived", arrivedDate.getTime());
-                        bundle.putLong("departure", departerDate.getTime());
-                        PaymentFragment paymentFragment=new PaymentFragment();
-                        paymentFragment.setArguments(bundle);
-                        listener.FragmentChange(paymentFragment);
+    public void payBtnClick() {
+        Bundle bundle = new Bundle();
+        Log.d(TAG, "onClick: " + arrivedDate.getTime());
+        Log.d(TAG, "onClick: " + departerDate.getTime());
+        // bundle.putBoolean("s", true);
+        bundle.putLong("arrived", arrivedDate.getTime());
+        bundle.putLong("departure", departerDate.getTime());
+        PaymentFragment paymentFragment = new PaymentFragment();
+        paymentFragment.setArguments(bundle);
+        listener.FragmentChange(paymentFragment);
 
     }
 }
